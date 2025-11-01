@@ -1,6 +1,10 @@
 class CatalogController {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:3000/api';
+        // Detectar si estamos en producción o desarrollo
+        this.apiBaseUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api' 
+            : '/api';  // En producción usa rutas relativas
+        
         this.currentCategory = null;
         this.currentResults = [];
         this.categories = [];
